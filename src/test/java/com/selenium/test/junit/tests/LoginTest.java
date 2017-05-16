@@ -26,7 +26,7 @@ public class LoginTest {
     }
 
     @Test
-    public void testFailedLogin() {
+    public void T2_testFailedLogin() {
         HomePage homePage = new HomePage();
         LoginPage loginPage = homePage.clickLogin();
         loginPage.login("aaa", "aaa");
