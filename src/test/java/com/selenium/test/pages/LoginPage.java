@@ -9,8 +9,6 @@ import org.openqa.selenium.support.FindBy;
  */
 public class LoginPage extends BasePage {
 
-    private static final String PAGE_URL = "http://drivers4agh.ddns.net/drivers";
-
     @FindBy(id = "Login")
     private WebElement loginInput;
 

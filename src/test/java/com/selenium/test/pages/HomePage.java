@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
  */
 public class HomePage extends BasePage {
 
-    private static final String PAGE_URL = "http://drivers4agh.ddns.net/drivers";
+    private static final String PAGE_URL = "http://drivers4agh.ddns.net";
 
     @FindBy(id = "loginLink")
     private WebElement loginLink;

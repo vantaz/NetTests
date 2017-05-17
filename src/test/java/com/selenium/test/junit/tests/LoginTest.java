@@ -30,7 +30,7 @@ public class LoginTest {
         HomePage homePage = new HomePage();
         LoginPage loginPage = homePage.clickLogin();
         loginPage.login("aaa", "aaa");
-        assertTrue("Login failed!", !loginPage.isLoginFailed());
+        assertTrue("Login failed!", loginPage.isLoginFailed());
     }
 
     @After
