@@ -1,8 +1,13 @@
 package com.selenium.test.pages;
 
 import com.selenium.test.webtestsbase.BasePage;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.Set;
 
 /**
  * This page is a page object example.
@@ -13,6 +18,12 @@ public class HomePage extends BasePage {
 
     @FindBy(id = "loginLink")
     private WebElement loginLink;
+
+    @FindBy(xpath = "//*[@id=\"rating-panel-2\"]/span[3]")
+    private WebElement votePlus;
+
+    @FindBy(xpath = "//*[@id=\"rating-panel-2\"]/span[2]")
+    private WebElement voteCount;
 
     public HomePage() {
         super(true);
@@ -31,5 +42,26 @@ public class HomePage extends BasePage {
     public LoginPage clickLogin() {
         loginLink.click();
         return new LoginPage();
+    }
+
+    public void clickVotePlus() {
+        votePlus.click();
+    }
+
+    public boolean checkAlert() {
+        String alertText = null;
+        try {
+            WebDriverWait wait = new WebDriverWait(getDriver(), 2);
+            wait.until(ExpectedConditions.alertIsPresent());
+            Alert alert = getDriver().switchTo().alert();
+            alertText = alert.getText();
+            alert.accept();
+        } catch (Exception e) {
+        }
+        return "Nie udało się zagłosować, spróbuj ponownie.".equals(alertText);
+    }
+
+    public int getVoteValue() {
+        return Integer.parseInt(voteCount.getText());
     }
 }
