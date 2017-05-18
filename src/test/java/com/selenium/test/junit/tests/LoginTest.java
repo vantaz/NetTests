@@ -26,6 +26,14 @@ public class LoginTest {
     }
 
     @Test
+    public void TS001TC001_testLogin() {
+        HomePage homePage = new HomePage();
+        LoginPage loginPage = homePage.clickLogin();
+        loginPage.login("zaq", "zaq");
+        assertTrue("Login failed!", homePage.isUserLogged());
+    }
+
+    @Test
     public void TS001TC002_testFailedLogin() {
         HomePage homePage = new HomePage();
         LoginPage loginPage = homePage.clickLogin();
