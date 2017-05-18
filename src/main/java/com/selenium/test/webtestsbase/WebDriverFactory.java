@@ -83,6 +83,7 @@ public class WebDriverFactory {
     }
 
     public static void takeScreenShot() {
+        //TODO: Zaimplementować ^^
         System.out.println("ScreenShot method called");
     }
 
