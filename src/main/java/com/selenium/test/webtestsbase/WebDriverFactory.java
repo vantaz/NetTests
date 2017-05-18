@@ -1,6 +1,7 @@
 package com.selenium.test.webtestsbase;
 
 import com.selenium.test.configuration.TestsConfig;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -10,6 +11,8 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -79,10 +82,6 @@ public class WebDriverFactory {
         }
     }
 
-    /**
-     * Method for screenshot taking. It is empty now, because you could save your screenshot as you want.
-     * This method calls in tests listeners on test fail
-     */
     public static void takeScreenShot() {
         System.out.println("ScreenShot method called");
     }
