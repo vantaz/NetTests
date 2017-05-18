@@ -22,6 +22,9 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//*[@id=\"logoutForm\"]/ul/li[2]/a")
     private WebElement logoutLink;
 
+    @FindBy(xpath = "//*[@id=\"logoutForm\"]/ul/li[1]/a")
+    private WebElement manageProfileLink;
+
     @FindBy(xpath = "//*[@id=\"rating-panel-2\"]/span[3]")
     private WebElement votePlus;
 
@@ -70,5 +73,10 @@ public class HomePage extends BasePage {
 
     public boolean isUserLogged() {
         return logoutLink.isDisplayed();
+    }
+
+    public String getLoggedUserName() {
+        String text = manageProfileLink.getText();
+        return text.substring(6,text.length()-1);
     }
 }

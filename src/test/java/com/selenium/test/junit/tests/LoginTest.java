@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -16,6 +17,8 @@ import static org.junit.Assert.assertTrue;
  */
 public class LoginTest {
 
+    private String username = "zaq";
+    private String password = "zaq";
 
     @Rule
     public ScreenShotOnFailRule screenShotOnFailRule = new ScreenShotOnFailRule();
@@ -29,8 +32,11 @@ public class LoginTest {
     public void TS001TC001_testLogin() {
         HomePage homePage = new HomePage();
         LoginPage loginPage = homePage.clickLogin();
-        loginPage.login("zaq", "zaq");
+        loginPage.login(username, password);
+
         assertTrue("Login failed!", homePage.isUserLogged());
+        String s = homePage.getLoggedUserName();
+        assertEquals(username, homePage.getLoggedUserName());
     }
 
     @Test
