@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * This page is a page object example.
+ * Created by vanitaz.
  */
 public class LoginPage extends BasePage {
 

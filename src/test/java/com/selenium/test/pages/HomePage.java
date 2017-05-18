@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.Set;
 
 /**
- * This page is a page object example.
+ * Created by vanitaz.
  */
 public class HomePage extends BasePage {
 

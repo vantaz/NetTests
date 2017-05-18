@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Created by vanitaz on 17.05.17.
+ * Created by vanitaz.
  */
 public class VotingTest {
 
