@@ -5,9 +5,11 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 
-@Suite.SuiteClasses(
-        LoginTest.class
-)
+@Suite.SuiteClasses({
+        RegistrationTest.class,
+        LoginTest.class,
+        ManagementTest.class
+})
 
 
 public class UsersSuite {
