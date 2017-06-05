@@ -74,6 +74,11 @@ public abstract class MainPage extends BasePage {
         return new HomePage();
     }
 
+    public ManagementPage goToManagementPage() {
+        manageProfileLink.click();
+        return new ManagementPage();
+    }
+
 //    public TopPage goToTopPage() {
 //        topLink.click();
 //        return new TopPage();
