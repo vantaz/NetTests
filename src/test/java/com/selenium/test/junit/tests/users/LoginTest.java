@@ -33,6 +33,13 @@ public class LoginTest {
         WebDriverFactory.startBrowser(true);
     }
 
+
+    @Test
+    public void test() {
+        HomePage homePage = new HomePage();
+        homePage.isUserLogged();
+    }
+
     @Test
     public void TS001TC001_testLogin() {
         HomePage homePage = new HomePage();

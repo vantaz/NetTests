@@ -12,24 +12,9 @@ import java.util.Set;
 /**
  * Created by vanitaz.
  */
-public class HomePage extends BasePage {
+public class HomePage extends MainPage {
 
     private static final String PAGE_URL = "http://drivers4agh.ddns.net/";
-
-    @FindBy(xpath = "/html/body/div[1]/div/div[1]/a/span")
-    private WebElement logo;
-
-    @FindBy(xpath = "//*[@id=\"loginLink\"]")
-    private WebElement loginLink;
-
-    @FindBy(xpath = "//*[@id=\"registerLink\"]")
-    private WebElement registerLink;
-
-    @FindBy(xpath = "//*[@id=\"logoutForm\"]/ul/li[2]/a")
-    private WebElement logoutLink;
-
-    @FindBy(xpath = "//*[@id=\"logoutForm\"]/ul/li[1]/a")
-    private WebElement manageProfileLink;
 
     @FindBy(xpath = "//*[@id=\"rating-panel-2\"]/span[3]")
     private WebElement votePlus;
@@ -51,10 +36,6 @@ public class HomePage extends BasePage {
         return PAGE_URL.equals(getDriver().getCurrentUrl()) && logo.isDisplayed();
     }
 
-    public LoginPage clickLogin() {
-        loginLink.click();
-        return new LoginPage();
-    }
 
     public void clickVotePlus() {
         votePlus.click();
@@ -75,10 +56,6 @@ public class HomePage extends BasePage {
 
     public int getVoteValue() {
         return Integer.parseInt(voteCount.getText());
-    }
-
-    public boolean isUserLogged() {
-        return logoutLink.isDisplayed();
     }
 
     public String getLoggedUserName() {

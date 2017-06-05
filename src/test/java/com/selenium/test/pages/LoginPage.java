@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by vanitaz.
  */
-public class LoginPage extends BasePage {
+public class LoginPage extends MainPage {
 
     @FindBy(id = "Login")
     private WebElement loginInput;
