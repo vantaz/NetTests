@@ -1,6 +1,7 @@
 package com.selenium.test.pages;
 
 import com.selenium.test.webtestsbase.BasePage;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -53,8 +54,13 @@ public class LoginPage extends MainPage {
         clickLogin();
     }
 
-    public boolean isLoginFailed() {
-        return failedLoginMsg.isDisplayed();
+    public String getErrorMsg() {
+        try {
+            return failedLoginMsg.getText();
+        }
+        catch (NoSuchElementException e) {
+            return "";
+        }
     }
 
 

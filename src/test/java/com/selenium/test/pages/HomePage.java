@@ -58,8 +58,4 @@ public class HomePage extends MainPage {
         return Integer.parseInt(voteCount.getText());
     }
 
-    public String getLoggedUserName() {
-        String text = manageProfileLink.getText();
-        return text.substring(6,text.length()-1);
-    }
 }

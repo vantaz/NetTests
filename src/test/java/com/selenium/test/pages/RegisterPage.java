@@ -41,7 +41,7 @@ public class RegisterPage extends MainPage {
 
     @Override
     public boolean isPageOpened() {
-        return "Rejestracja".equals(title);
+        return "Rejestracja.".equals(title.getText());
     }
 
     private void insertLogin(String login) {

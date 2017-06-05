@@ -34,6 +34,9 @@ public class TestsConfig {
     @Property("password")
     private String password = "";
 
+    @Property("email")
+    private String email = "";
+
     /**
      * getting browser object
      * @return browser object
@@ -55,6 +58,9 @@ public class TestsConfig {
         return password;
     }
 
+    public String getEmail() {
+        return email;
+    }
 
     /**
      * getting browser version

@@ -25,6 +25,18 @@ public abstract class MainPage extends BasePage {
     @FindBy(xpath = "//*[@id=\"logoutForm\"]/ul/li[1]/a")
     WebElement manageProfileLink;
 
+    @FindBy(xpath = "/html/body/div[1]/div/div[2]/ul[1]/li[1]/a")
+    WebElement homeLink;
+
+    @FindBy(xpath = "/html/body/div[1]/div/div[2]/ul[1]/li[2]/a")
+    WebElement topLink;
+
+    @FindBy(xpath = "/html/body/div[1]/div/div[2]/ul[1]/li[3]/a")
+    WebElement waitLink;
+
+    @FindBy(xpath = "/html/body/div[1]/div/div[2]/ul[1]/li[4]/a")
+    WebElement addLink;
+
 
     public boolean isUserLogged() {
         try {
@@ -47,17 +59,40 @@ public abstract class MainPage extends BasePage {
     }
 
 
-    public LoginPage clickLogin() {
+    public LoginPage goToLoginPage() {
         loginLink.click();
         return new LoginPage();
     }
 
-    public RegisterPage clickRegister() {
+    public RegisterPage goToRegisterPage() {
         registerLink.click();
         return new RegisterPage();
     }
 
+    public HomePage goToHomePage() {
+        homeLink.click();
+        return new HomePage();
+    }
 
+//    public TopPage goToTopPage() {
+//        topLink.click();
+//        return new TopPage();
+//    }
+//
+//    public WaitPage goToWaitPage() {
+//        waitLink.click();
+//        return new WaitPage();
+//    }
+//
+//    public AddPage goToAddPage() {
+//        addLink.click();
+//        return new AddPage();
+//    }
+
+
+    public void logout() {
+        logoutLink.click();
+    }
 
 
     public MainPage(boolean openPageByUrl) {

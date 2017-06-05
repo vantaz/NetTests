@@ -12,7 +12,9 @@ import org.junit.Test;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
+import static java.lang.Thread.sleep;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -35,18 +37,12 @@ public class LoginTest {
 
 
     @Test
-    public void test() {
-        HomePage homePage = new HomePage();
-        homePage.isUserLogged();
-    }
-
-    @Test
     public void TS001TC001_testLogin() {
         HomePage homePage = new HomePage();
-        LoginPage loginPage = homePage.clickLogin();
+        LoginPage loginPage = homePage.goToLoginPage();
         loginPage.login(username, password);
 
-        assertTrue("Login failed!", homePage.isUserLogged());
+        assertTrue("Login failed!", loginPage.isUserLogged());
         String s = homePage.getLoggedUserName();
         assertEquals(username, homePage.getLoggedUserName());
     }
@@ -54,9 +50,31 @@ public class LoginTest {
     @Test
     public void TS001TC002_testFailedLogin() {
         HomePage homePage = new HomePage();
-        LoginPage loginPage = homePage.clickLogin();
+        LoginPage loginPage = homePage.goToLoginPage();
         loginPage.login(username, password + "NOPE");
-        assertTrue("Login failed!", loginPage.isLoginFailed());
+        assertFalse("Login failed!", loginPage.isUserLogged());
+        String errorMsg = loginPage.getErrorMsg();
+        assertEquals("Nieporawny login lub hasło", errorMsg);
+    }
+
+    @Test
+    public void TS001TC005_testLogout() {
+        HomePage homePage = new HomePage();
+        LoginPage loginPage = homePage.goToLoginPage();
+        loginPage.login(username, password);
+        assertTrue("Login failed!", loginPage.isUserLogged());
+
+        String s = homePage.getLoggedUserName();
+        assertEquals(username, homePage.getLoggedUserName());
+
+        homePage.logout();
+        try {
+            sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        assertFalse("User still logged!", homePage.isUserLogged());
+
     }
 
     @After
