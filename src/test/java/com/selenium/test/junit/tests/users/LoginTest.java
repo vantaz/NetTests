@@ -1,5 +1,6 @@
-package com.selenium.test.junit.tests;
+package com.selenium.test.junit.tests.users;
 
+import com.selenium.test.configuration.TestsConfig;
 import com.selenium.test.junit.rules.ScreenShotOnFailRule;
 import com.selenium.test.pages.HomePage;
 import com.selenium.test.pages.LoginPage;
@@ -8,6 +9,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -17,8 +20,10 @@ import static org.junit.Assert.assertTrue;
  */
 public class LoginTest {
 
-    private String username = "zaq";
-    private String password = "zaq";
+    private TestsConfig config = TestsConfig.getConfig();
+
+    private String username = config.getUsername();
+    private String password = config.getPassword();
 
     @Rule
     public ScreenShotOnFailRule screenShotOnFailRule = new ScreenShotOnFailRule();
@@ -43,7 +48,7 @@ public class LoginTest {
     public void TS001TC002_testFailedLogin() {
         HomePage homePage = new HomePage();
         LoginPage loginPage = homePage.clickLogin();
-        loginPage.login("aaa", "aaa");
+        loginPage.login(username, password + "NOPE");
         assertTrue("Login failed!", loginPage.isLoginFailed());
     }
 

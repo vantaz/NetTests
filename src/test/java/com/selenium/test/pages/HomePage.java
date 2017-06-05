@@ -14,10 +14,16 @@ import java.util.Set;
  */
 public class HomePage extends BasePage {
 
-    private static final String PAGE_URL = "http://drivers4agh.ddns.net";
+    private static final String PAGE_URL = "http://drivers4agh.ddns.net/";
 
-    @FindBy(id = "loginLink")
+    @FindBy(xpath = "/html/body/div[1]/div/div[1]/a/span")
+    private WebElement logo;
+
+    @FindBy(xpath = "//*[@id=\"loginLink\"]")
     private WebElement loginLink;
+
+    @FindBy(xpath = "//*[@id=\"registerLink\"]")
+    private WebElement registerLink;
 
     @FindBy(xpath = "//*[@id=\"logoutForm\"]/ul/li[2]/a")
     private WebElement logoutLink;
@@ -42,7 +48,7 @@ public class HomePage extends BasePage {
 
     @Override
     public boolean isPageOpened() {
-        return loginLink.isDisplayed();
+        return PAGE_URL.equals(getDriver().getCurrentUrl()) && logo.isDisplayed();
     }
 
     public LoginPage clickLogin() {
