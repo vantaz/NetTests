@@ -12,18 +12,9 @@ import java.util.Set;
 /**
  * Created by vanitaz.
  */
-public class HomePage extends BasePage {
+public class HomePage extends MainPage {
 
-    private static final String PAGE_URL = "http://drivers4agh.ddns.net";
-
-    @FindBy(id = "loginLink")
-    private WebElement loginLink;
-
-    @FindBy(xpath = "//*[@id=\"logoutForm\"]/ul/li[2]/a")
-    private WebElement logoutLink;
-
-    @FindBy(xpath = "//*[@id=\"logoutForm\"]/ul/li[1]/a")
-    private WebElement manageProfileLink;
+    private static final String PAGE_URL = "http://drivers4agh.ddns.net/";
 
     @FindBy(xpath = "//*[@id=\"rating-panel-2\"]/span[3]")
     private WebElement votePlus;
@@ -42,13 +33,9 @@ public class HomePage extends BasePage {
 
     @Override
     public boolean isPageOpened() {
-        return loginLink.isDisplayed();
+        return PAGE_URL.equals(getDriver().getCurrentUrl()) && logo.isDisplayed();
     }
 
-    public LoginPage clickLogin() {
-        loginLink.click();
-        return new LoginPage();
-    }
 
     public void clickVotePlus() {
         votePlus.click();
@@ -71,12 +58,4 @@ public class HomePage extends BasePage {
         return Integer.parseInt(voteCount.getText());
     }
 
-    public boolean isUserLogged() {
-        return logoutLink.isDisplayed();
-    }
-
-    public String getLoggedUserName() {
-        String text = manageProfileLink.getText();
-        return text.substring(6,text.length()-1);
-    }
 }

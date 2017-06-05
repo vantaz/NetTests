@@ -28,6 +28,14 @@ public class TestsConfig {
     @Property("browser.version")
     private String version = "";
 
+    @Property("username")
+    private String username = "";
+
+    @Property("password")
+    private String password = "";
+
+    @Property("email")
+    private String email = "";
 
     /**
      * getting browser object
@@ -40,6 +48,18 @@ public class TestsConfig {
         } else {
             throw new IllegalStateException("Browser name '" + browser + "' is not valid");
         }
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     /**

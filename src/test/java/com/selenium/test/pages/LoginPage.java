@@ -1,13 +1,14 @@
 package com.selenium.test.pages;
 
 import com.selenium.test.webtestsbase.BasePage;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
  * Created by vanitaz.
  */
-public class LoginPage extends BasePage {
+public class LoginPage extends MainPage {
 
     @FindBy(id = "Login")
     private WebElement loginInput;
@@ -53,8 +54,13 @@ public class LoginPage extends BasePage {
         clickLogin();
     }
 
-    public boolean isLoginFailed() {
-        return failedLoginMsg.isDisplayed();
+    public String getErrorMsg() {
+        try {
+            return failedLoginMsg.getText();
+        }
+        catch (NoSuchElementException e) {
+            return "";
+        }
     }
 
 
